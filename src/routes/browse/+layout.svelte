@@ -2,7 +2,7 @@
     import Header from "./Header.svelte";
 </script>
 
-<div class="flex w-full h-full flex-col">
+<div class="w-full h-full">
     <Header />
     <div class="w-full h-full">
         <slot />

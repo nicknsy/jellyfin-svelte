@@ -10,6 +10,6 @@
         <a href="#">TV Shows</a>
     </div>
     <div>
-        <a href="#">Log Out</a>
+        <a href="/login">Log Out</a>
     </div>
 </nav>
