@@ -1,5 +1,18 @@
-<script>
+<script lang="ts">
+    import { goto } from '$app/navigation';
+    import { JellyfinAPI } from '@/stores/jellyfin-api';
+    import { CurrentSession } from '@/stores/session';
     import logo from '$lib/assets/logo.png';
+
+    async function login() {
+        try {
+            const { data } = await JellyfinAPI.authenticateUserByName('test', 'test');
+            CurrentSession.updateAuth(data);
+            goto('/browse');
+        } catch (error) {
+            console.error(error);
+        }
+    }
 </script>
 
 <svelte:head>
@@ -14,6 +27,6 @@
         </div>
         <label class="w-full"><input type="text" placeholder="Username" class="rounded-sm p-2 w-full bg-slate-600"></label>
         <label class="w-full"><input type="password" placeholder="Password" class="rounded-sm p-2 w-full bg-slate-600"></label>
-        <a href="/browse" class="w-full"><button class="font-semibold w-full bg-sky-500 p-2 rounded-sm">Sign In</button></a>
+        <a href="" class="w-full"><button on:click={login} class="font-semibold w-full bg-sky-500 p-2 rounded-sm">Sign In</button></a>
     </div>
 </div>

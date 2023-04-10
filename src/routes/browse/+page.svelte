@@ -3,6 +3,10 @@
     import backdrop from '$lib/assets/backdrop.webp';
 </script>
 
+<svelte:head>
+    <title>Jellyfin - Browse</title>
+</svelte:head>
+
 <div class="relative w-full h-[35vw]">
     <img alt="Backdrop" src={backdrop} class="relative top-0 left-0 w-full -z-10">
     <div class="absolute bottom-0 left-0 px-14 py-10 z-10 flex flex-col gap-5 w-2/5 [text-shadow:_2px_2px_4px_rgba(0,0,0,.45);]">
