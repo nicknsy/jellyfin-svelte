@@ -32,6 +32,11 @@ export class Session {
         this.Auth = newAuth;
         window.localStorage.setItem('jellyfin-auth', JSON.stringify(newAuth));
     }
+
+    public clearAuth() {
+        this.Auth = undefined;
+        window.localStorage.removeItem('jellyfin-auth');
+    }
 }
 
 export const CurrentSession = new Session(JellyfinAPI);

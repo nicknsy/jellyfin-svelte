@@ -1,13 +1,14 @@
-import { browser } from '$app/environment';
-import { goto } from '$app/navigation';
 import type { PageLoad } from './$types';
+import { goto } from '$app/navigation';
+import { browser } from '$app/environment';
 
 export const load = (async () => {
     if (browser) {
         const { CurrentSession } = await import("@/stores/session");
-
-        CurrentSession.clearAuth();
-        goto('/login');
+    
+        if (CurrentSession?.getAuth()?.AccessToken) {
+            goto('/browse');
+        }
     }
 
     return {};
