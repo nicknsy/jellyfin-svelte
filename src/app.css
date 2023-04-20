@@ -7,15 +7,14 @@
 }
 
 html {
-    font-size: .85vw;
     height: 100%;
     width: 100%;
-    overflow-x: hidden;
 }
 
 body {
-   color: white; 
-   background-color: rgb(17 24 39);
+   color: white;
+   background-color: red;
+   //background-color: rgb(17 24 39);
    height: 100%;
    width: 100%;
 }

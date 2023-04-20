@@ -32,6 +32,6 @@
         {/if}
     </div>
     <div>
-        <a href="/login">Log Out</a>
+        <a href="/logout">Log Out</a>
     </div>
 </nav>

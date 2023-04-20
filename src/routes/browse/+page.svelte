@@ -7,8 +7,10 @@
     <title>Jellyfin - Browse</title>
 </svelte:head>
 
-<div class="relative w-full h-[35vw]">
-    <img alt="Backdrop" src={backdrop} class="relative top-0 left-0 w-full -z-10">
+<div class="relative top-0 left-0 w-full max-h-[35vw]">
+    <div class="max-h-screen overflow-hidden">
+        <img alt="Backdrop" src={backdrop} class="w-full">
+    </div>
     <div class="absolute bottom-0 left-0 px-14 py-10 z-10 flex flex-col gap-5 w-2/5 [text-shadow:_2px_2px_4px_rgba(0,0,0,.45);]">
         <p class="text-3xl font-bold">Avatar: The Way of Water</p>
         <p class="text-lg">Jake Sully lives with his newfound family formed on the extrasolar moon Pandora. Once a familiar threat returns to finish what was previously started, Jake must work with Neytiri and the army of the Na'vi race to protect their home.</p>
@@ -18,7 +20,7 @@
         </div>
     </div>
 </div>
-<div class="w-full h-full bg-gradient-to-t from-slate-900/100 from-[75%] to-slate-900/0 to-100%">
+<div class="relative z-20 flex-grow bg-gradient-to-t from-gray-950/100 from-[85%] to-slate-950/0 to-100%">
     <div class="flex flex-col gap-5 p-14">
         <MediaRow label="Keep Watching" />
         <MediaRow label="New Movies" />

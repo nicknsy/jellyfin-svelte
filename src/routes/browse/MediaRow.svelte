@@ -63,22 +63,42 @@
         clearTimeout(hoverTimeout);
         canScroll = false;
     }
+
+    function clickLeft(event: MouseEvent) {
+        scrollContainer.scrollBy({
+            top: 0,
+            left: -600,
+            behavior: "smooth"
+        });
+    }
+
+    function clickRight(event: MouseEvent) {
+        scrollContainer.scrollBy({
+            top: 0,
+            left: 600,
+            behavior: "smooth"
+        });
+    }
 </script>
 
 <div class="w-full overflow-hidden">
     <h2 class="text-2xl font-semibold">{label}</h2>
     <!-- svelte-ignore a11y-mouse-events-have-key-events -->
-    <div 
-        bind:this={scrollContainer} 
-        on:wheel={handleWheel} 
-        on:mouseenter={handleEnter}
-        on:mouseleave={handleLeave}
-        class="flex gap-5 w-full mt-5 overflow-x-hidden scroll-auto"
-    >
+    <div class="relative">
+        <div on:click={clickLeft} class="absolute top-[50%] left-0 cursor-pointer z-50"><p>[--</p></div>
+        <div on:click={clickRight} class="absolute top-[50%] right-0 cursor-pointer z-50"><p>--]</p></div>
+        <div 
+            bind:this={scrollContainer}
+            on:wheel={handleWheel} 
+            on:mouseenter={handleEnter}
+            on:mouseleave={handleLeave}
+            class="flex relative gap-5 w-full mt-5 overflow-x-hidden scroll-auto"
+        >
         {#each {length: 20} as _, i}
             <div class="flex-none md w-[10%] bg-gray-600/80 rounded-md">
                 <img alt="Media Poster" src="/src/lib/assets/poster.jpg" class="w-full rounded-md">
             </div>
         {/each}
+        </div>
     </div>
 </div>
