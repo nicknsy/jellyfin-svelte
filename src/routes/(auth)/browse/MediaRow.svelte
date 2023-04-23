@@ -1,4 +1,6 @@
 <script lang="ts" context="module">
+    import posterImage from '$lib/assets/poster.jpg';
+
     const moveThreshold = 2;   // ratio of abs(deltaX/deltaY) that must be met to start scroll, can't be 0
     const scrollingThreshold = 100; // time in ms between last scroll to be considered no longer scrolling
     const hoverThreshold = 0; // time in ms mouse must be over before scroll is allowed
@@ -96,7 +98,7 @@
         >
         {#each {length: 20} as _, i}
             <div class="flex-none md w-[10%] bg-gray-600/80 rounded-md">
-                <img alt="Media Poster" src="/src/lib/assets/poster.jpg" class="w-full rounded-md">
+                <img alt="Media Poster" src={posterImage} class="w-full rounded-md">
             </div>
         {/each}
         </div>

@@ -5,5 +5,8 @@ export default defineConfig({
 	plugins: [sveltekit()],
 	server: {
 		host: true
+	},
+	ssr: {
+		noExternal: ['@jellyfin/sdk']
 	}
 });

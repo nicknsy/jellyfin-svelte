@@ -23,7 +23,7 @@
             CurrentSession.updateAuth(data);
             goto('/browse');
         } catch (ex) {
-            console.error(ex);
+            console.error('Authentication error: ', ex);
 
             // Show error message on screen if axios response
             if (ex instanceof AxiosError) {
@@ -51,7 +51,7 @@
         </div>
         <label class="w-full"><input bind:value={username} type="text" autocomplete="username" placeholder="Username" class="rounded-sm p-2 w-full bg-slate-600"></label>
         <label class="w-full"><input bind:value={password} type="password" autocomplete="current-password" placeholder="Password" class="rounded-sm p-2 w-full bg-slate-600"></label>
-        <button on:click={login} class="font-semibold w-full bg-sky-500 p-2 rounded-sm">Sign In</button>
+        <button on:click={login} class="hover:opacity-80 font-semibold w-full bg-sky-500 p-2 rounded-sm">Sign In</button>
         {#if error}
             <div class="w-full text-center rounded-sm bg-red-400/90 border-red-500/90 border p-2 text-red-900">
                 {error}

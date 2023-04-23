@@ -13,4 +13,4 @@ const JellfyinSDK = new Jellyfin({
     }
 });
 
-export const JellyfinAPI = JellfyinSDK.createApi('http://localhost:8096/');
+export const JellyfinAPI = JellfyinSDK.createApi('http://jellyfin.local:8096/');
