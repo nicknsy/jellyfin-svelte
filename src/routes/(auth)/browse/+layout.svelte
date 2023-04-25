@@ -4,6 +4,7 @@
 
     export let data: LayoutData;
 
+    // Construct nav links from user views items
     let navLinks = [{ label: 'Home', link: '/browse' }];
     data.views?.forEach(item => 
         item.Name && item.Id && navLinks.push({ label: item.Name, link: `/browse/library/${item.Id}` }));

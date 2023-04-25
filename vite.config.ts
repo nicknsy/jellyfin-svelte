@@ -7,6 +7,6 @@ export default defineConfig({
 		host: true
 	},
 	ssr: {
-		noExternal: ['@jellyfin/sdk']
+		noExternal: ['@jellyfin/sdk']	// https://vite-plugin-ssr.com/common-issues#npm-packages-containing-invalid-code
 	}
 });
