@@ -15,6 +15,8 @@
 </script>
 
 <script lang="ts">
+	import Icon from "@iconify/svelte";
+
     export let label: string;
 
     let scrollContainer: Element;
@@ -83,12 +85,11 @@
     }
 </script>
 
-<div class="w-full overflow-hidden">
-    <h2 class="text-2xl font-semibold">{label}</h2>
+<div class="w-full overflow-hidden px-10">
+    <h2 class="text-xl">{label}</h2>
     <!-- svelte-ignore a11y-mouse-events-have-key-events -->
-    <div class="relative">
-        <div on:click={clickLeft} class="absolute top-[50%] left-0 cursor-pointer z-50"><p>[--</p></div>
-        <div on:click={clickRight} class="absolute top-[50%] right-0 cursor-pointer z-50"><p>--]</p></div>
+    <div class="w-full flex">
+        <!-- <button on:click={clickLeft} class="cursor-pointer text-6xl"><Icon icon="material-symbols:chevron-left" /></button> -->
         <div 
             bind:this={scrollContainer}
             on:wheel={handleWheel} 
@@ -97,10 +98,11 @@
             class="flex relative gap-5 w-full mt-5 overflow-x-hidden scroll-auto"
         >
         {#each {length: 20} as _, i}
-            <div class="flex-none md w-[10%] bg-gray-600/80 rounded-md">
+            <div class="flex-none md w-1/3 sm:w-1/5 md:w-1/6 lg:w-[10%] bg-gray-600/80 rounded-md">
                 <img alt="Media Poster" src={posterImage} class="w-full rounded-md">
             </div>
         {/each}
         </div>
+        <!-- <button on:click={clickRight} class="cursor-pointer text-6xl"><Icon icon="material-symbols:chevron-right" /></button> -->
     </div>
 </div>

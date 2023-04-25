@@ -12,5 +12,6 @@
 
 <div class="flex flex-col w-full h-full">
     <Header links={navLinks} profileImageUrl={data.profileImage} />
+    <div class="xl:hidden w-full h-24 flex-none bg-slate-900"></div>
     <slot />
 </div>

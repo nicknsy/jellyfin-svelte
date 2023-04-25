@@ -6,7 +6,7 @@
     export let profileImageUrl: string | undefined;
 </script>
 
-<nav class="w-full flex gap-10 justify-between py-5 px-14 items-center fixed top-0 shadow-lg bg-black/80 z-50">
+<nav class="w-full flex gap-10 justify-between py-5 px-14 items-center fixed top-0 shadow-lg bg-black/50 z-50">
     <div class="flex justify-center items-center gap-6">
         <img alt="Logo" src={logo} class="w-8 mr-4">
         <p class="md:hidden">Browse ⏷</p>
@@ -15,7 +15,7 @@
         {/each}
     </div>
     <div class="flex justify-center items-center gap-6">
-        <input placeholder="Titles, people, genres" class="rounded-sm py-1 px-3 bg-slate-600 outline-none">
+        <input placeholder="Titles, people, genres" class="hidden rounded-sm py-1 px-3 bg-slate-600 outline-none">
         <span class="text-2xl"><Icon icon="mdi:magnify" /></span>
         <span class="text-2xl"><Icon icon="mdi:account-group-outline" /></span>
         <div class="rounded-sm w-8 cursor-pointer relative group">

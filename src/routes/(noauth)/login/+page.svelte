@@ -43,7 +43,7 @@
     <title>Jellyfin - Login</title>
 </svelte:head>
 
-<div class="w-full h-full flex items-center justify-center bg-gray-950">
+<div class="w-full h-full flex items-center justify-center bg-slate-900">
     <form class="flex flex-col justify-center items-center gap-5 p-10 rounded-lg w-full h-full md:h-auto md:w-1/3 min-w-[30em]">
         <div class="flex w-full justify-center items-center p-10 gap-5">
             <img alt="Logo" src="{logo}" class="w-20">
