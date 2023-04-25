@@ -1,6 +1,6 @@
 <script lang="ts">
     import { goto } from '$app/navigation';
-    import { JellyfinAPI } from '@/stores/jellyfin-api';
+    import { JellyfinApi } from '@/stores/jellyfin-api';
     import { CurrentSession } from '@/stores/session';
 	import { AxiosError } from 'axios';
 
@@ -19,7 +19,7 @@
             }
 
             // Update current session auth data and redirect to main page
-            const { data } = await JellyfinAPI.authenticateUserByName(username, password);
+            const { data } = await JellyfinApi.authenticateUserByName(username, password);
             CurrentSession.updateAuth(data);
             goto('/browse');
         } catch (ex) {

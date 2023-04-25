@@ -20,7 +20,7 @@
         </div>
     </div>
 </div>
-<div class="relative z-20 flex-grow bg-gradient-to-t from-gray-950/100 from-[85%] to-slate-950/0 to-100%">
+<div class="relative z-20 flex-grow bg-gradient-to-t from-gray-950/100 from-[85%] to-gray-950/0 to-100%">
     <div class="flex flex-col gap-5 p-14">
         <MediaRow label="Keep Watching" />
         <MediaRow label="New Movies" />

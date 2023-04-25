@@ -2,7 +2,7 @@ import { Jellyfin } from '@jellyfin/sdk';
 
 const version = '0.0.1';
 
-const JellfyinSDK = new Jellyfin({
+const JellfyinBase = new Jellyfin({
     clientInfo: {
         name: 'Jellyfin Svelte',
         version: version
@@ -13,4 +13,4 @@ const JellfyinSDK = new Jellyfin({
     }
 });
 
-export const JellyfinAPI = JellfyinSDK.createApi('http://jellyfin.local:8096/');
+export const JellyfinApi = JellfyinBase.createApi('http://jellyfin.local:8096/');

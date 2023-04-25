@@ -1,5 +1,6 @@
 import { browser } from '$app/environment';
-import { JellyfinAPI } from './jellyfin-api';
+import * as JellyfinSdk from '@jellyfin/sdk/lib/utils/api';
+import { JellyfinApi } from './jellyfin-api';
 import type { Api } from '@jellyfin/sdk'
 import type { AuthenticationResult } from '@jellyfin/sdk/lib/generated-client';
 
@@ -20,10 +21,13 @@ export class Session {
         }
     }
     
-    public getJellyfinApi(): Api {
+    public getJellyfinApi() {
         return this.JellyfinApi;
     }
 
+    /*
+     * Authentication & Local Storage
+     */
     public getAuth(): AuthenticationResult | undefined {
         return this.Auth;
     }
@@ -37,6 +41,33 @@ export class Session {
         this.Auth = undefined;
         window.localStorage.removeItem('jellyfin-auth');
     }
+
+    /*
+     * Utility Methods
+     */
+    public getProfileImageUrl(quality = 90) {
+        if (!this.Auth?.User?.Id) return undefined;
+
+        const user = this.Auth.User.Id;
+        const tag = this.Auth.User.PrimaryImageTag ?? '';
+        
+        return `${this.JellyfinApi.basePath}/Users/${user}/Images/Primary?quality=${quality}&tag=${tag}`;
+    }
+
+    /*
+     * SDK Wrapper Methods
+     */
+    public getItemsApi() {
+        return JellyfinSdk.getItemsApi(this.JellyfinApi);
+    }
+
+    public getUserViewsApi() {
+        return JellyfinSdk.getUserViewsApi(this.JellyfinApi);
+    }
+
+    public getImageApi() {
+        return JellyfinSdk.getImageApi(this.JellyfinApi);
+    }
 }
 
-export const CurrentSession = new Session(JellyfinAPI);
+export const CurrentSession = new Session(JellyfinApi);
