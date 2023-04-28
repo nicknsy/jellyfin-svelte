@@ -1,6 +1,10 @@
 <script lang="ts">
+	import type { PageData } from "./$types";
+
     import MediaRow from './MediaRow.svelte';
     import backdrop from '$lib/assets/backdrop.webp';
+
+    export let data: PageData;
 </script>
 
 <svelte:head>
@@ -8,7 +12,7 @@
 </svelte:head>
 
 <div class="hidden xl:block relative top-0 left-0 w-full h-[35vw] flex-none">
-    <div class="max-h-screen">
+    <div class="max-h-screen overflow-hidden">
         <img draggable="false" alt="Backdrop" src={backdrop} class="w-full h-full">
     </div>
     <div 
@@ -24,10 +28,8 @@
 </div>
 <div class="relative z-20 flex-grow bg-slate-900 xl:bg-inherit xl:bg-gradient-to-t from-slate-900/100 from-[90%] to-slate-900/0 to-100%">
     <div class="flex flex-col gap-10 my-14">
-        <MediaRow label="Keep Watching" />
-        <MediaRow label="New Movies" />
-        <MediaRow label="Thrilling" />
-        <MediaRow label="Anime" />
-        <MediaRow label="Foreign Films" />
+        {#each data.rows as row}
+            <MediaRow title={row.title} items={row.items} />
+        {/each}
     </div>
 </div>

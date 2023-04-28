@@ -68,6 +68,10 @@ export class Session {
     public getImageApi() {
         return JellyfinSdk.getImageApi(this.JellyfinApi);
     }
+
+    public getTvShowsApi() {
+        return JellyfinSdk.getTvShowsApi(this.JellyfinApi);
+    }
 }
 
 export const CurrentSession = new Session(JellyfinApi);

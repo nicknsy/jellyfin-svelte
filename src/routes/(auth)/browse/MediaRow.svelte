@@ -16,8 +16,10 @@
 
 <script lang="ts">
 	import Icon from "@iconify/svelte";
+	import type { BaseItemDto } from '@jellyfin/sdk/lib/generated-client';
 
-    export let label: string;
+    export let title: string;
+    export let items: BaseItemDto[];
 
     let scrollContainer: Element;
 
@@ -26,6 +28,9 @@
     let scrollDirection: WheelDirection = OWheelDirection.None;
     let canScroll: boolean = false;
     let lastScroll: Date;
+    
+    let showLeftButton = false;
+    let showRightButton = false;
 
     // Allow for sideways scroll on trackpad
     function handleWheel(event: WheelEvent) {
@@ -56,16 +61,24 @@
         }
     }
 
+    function updateScrollButtons(event: Event | undefined) {
+        showLeftButton = scrollContainer.scrollLeft > 0;
+        showRightButton = scrollContainer.scrollLeft < scrollContainer.scrollWidth - scrollContainer.clientWidth;
+    }
+
     function handleEnter(event: MouseEvent) {
         clearTimeout(hoverTimeout);
         hoverTimeout = setTimeout(() => {
             canScroll = true;
+            updateScrollButtons(undefined);
         }, hoverThreshold);
     }
 
     function handleLeave(event: MouseEvent) {
         clearTimeout(hoverTimeout);
         canScroll = false;
+        showLeftButton = false;
+        showRightButton = false;
     }
 
     function clickLeft(event: MouseEvent) {
@@ -86,23 +99,27 @@
 </script>
 
 <div class="w-full overflow-hidden px-10">
-    <h2 class="text-xl">{label}</h2>
+    <h2 class="text-xl">{title}</h2>
     <!-- svelte-ignore a11y-mouse-events-have-key-events -->
-    <div class="w-full flex">
-        <!-- <button on:click={clickLeft} class="cursor-pointer text-6xl"><Icon icon="material-symbols:chevron-left" /></button> -->
+    <div 
+        on:wheel={handleWheel} 
+        on:mouseenter={handleEnter}
+        on:mouseleave={handleLeave}
+        class="w-full flex relative"
+    >
+        <button class:hidden={!showLeftButton} on:click={clickLeft} class="mt-5 absolute left-0 z-20 bg-black/60 h-full lg:w-16 flex justify-center items-center text-5xl"><Icon icon="material-symbols:chevron-left" /></button>
+        <button class:hidden={!showRightButton} on:click={clickRight} class="mt-5 absolute right-0 z-20 bg-black/60 h-full lg:w-16 flex justify-center items-center text-5xl"><Icon icon="material-symbols:chevron-right" /></button>
+        
         <div 
             bind:this={scrollContainer}
-            on:wheel={handleWheel} 
-            on:mouseenter={handleEnter}
-            on:mouseleave={handleLeave}
-            class="flex relative gap-5 w-full mt-5 overflow-x-hidden scroll-auto"
+            on:scroll={updateScrollButtons}
+            class="flex gap-5 w-full mt-5 overflow-x-hidden scroll-auto"
         >
-        {#each {length: 20} as _, i}
+        {#each items as item}
             <div class="flex-none md w-1/3 sm:w-1/5 md:w-1/6 lg:w-[10%] bg-gray-600/80 rounded-md">
-                <img alt="Media Poster" src={posterImage} class="w-full rounded-md">
+                <img alt="Media Poster" src={`http://jellyfin.local:8096/Items/${item.Id}/Images/Primary`} class="w-full rounded-md">
             </div>
         {/each}
         </div>
-        <!-- <button on:click={clickRight} class="cursor-pointer text-6xl"><Icon icon="material-symbols:chevron-right" /></button> -->
     </div>
 </div>
