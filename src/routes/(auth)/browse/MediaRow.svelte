@@ -99,7 +99,7 @@
 </script>
 
 <div class="w-full overflow-hidden px-10">
-    <h2 class="text-xl">{title}</h2>
+    <h2 class="text-xl font-semibold">{title}</h2>
     <!-- svelte-ignore a11y-mouse-events-have-key-events -->
     <div 
         on:wheel={handleWheel} 
@@ -116,8 +116,10 @@
             class="flex gap-5 w-full mt-5 overflow-x-hidden scroll-auto"
         >
         {#each items as item}
-            <div class="flex-none md w-1/3 sm:w-1/5 md:w-1/6 lg:w-[10%] bg-gray-600/80 rounded-md">
-                <img alt="Media Poster" src={`http://jellyfin.local:8096/Items/${item.Id}/Images/Primary`} class="w-full rounded-md">
+            <div class="hover:border-white border-2 p-[2px] border-slate-900 flex-none md w-1/3 sm:w-1/5 md:w-1/6 lg:w-56 rounded-sm">
+                <a href={`/watch/${item.Id}`}>
+                    <img alt="Media Poster" src={`http://jellyfin.local:8096/Items/${item.ParentBackdropItemId ?? item.Id}/Images/Primary`} class="w-full h-full rounded-sm">
+                </a>
             </div>
         {/each}
         </div>

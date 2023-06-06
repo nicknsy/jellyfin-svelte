@@ -8,7 +8,6 @@ export const load = (async () => {
     
         if (CurrentSession?.getAuth()?.AccessToken) {
             goto('/browse');
-            got
         }
     }
 

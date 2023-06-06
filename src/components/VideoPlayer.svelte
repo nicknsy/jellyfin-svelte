@@ -1,12 +1,16 @@
 <script lang="ts">
+    //import * as muxjs from 'mux.js';
+    //import * as shaka from 'shaka-player';
+
     import { onMount } from 'svelte';
+
+    export let assetUri: string;
+
     onMount(async () => {
         window.muxjs = await import('mux.js'); 
         window.shaka = await import('shaka-player'); 
         initApp();
     });
-
-    const manifestUri = '';
 
     function initApp() {
         // Install built-in polyfills to patch browser incompatibilities.
@@ -37,7 +41,7 @@
         // Try to load a manifest.
         // This is an asynchronous process.
         try {
-            await player.load(manifestUri);
+            await player.load(assetUri);
             // This runs if the asynchronous load is successful.
             console.log('The video has now been loaded!');
         } catch (e) {
@@ -66,4 +70,4 @@
         controls autoplay
     >
     </video>
-</div> 
+</div>

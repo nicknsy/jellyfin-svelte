@@ -6,12 +6,12 @@
     export let profileImageUrl: string | undefined;
 </script>
 
-<nav class="w-full flex gap-10 justify-between py-5 px-14 items-center fixed top-0 shadow-lg bg-black/50 z-50">
+<nav class="w-full flex gap-10 justify-between py-5 px-14 items-center fixed top-0 z-50">
     <div class="flex justify-center items-center gap-6">
         <img alt="Logo" src={logo} class="w-8 mr-4">
         <p class="md:hidden">Browse ⏷</p>
         {#each links as {label, link}}
-            <a href={link} class="hover:opacity-80 whitespace-nowrap hidden md:inline">{label}</a>
+            <a href={link} class="hover:opacity-90 whitespace-nowrap hidden md:inline font-light text-md">{label}</a>
         {/each}
     </div>
     <div class="flex justify-center items-center gap-6">

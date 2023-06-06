@@ -72,6 +72,14 @@ export class Session {
     public getTvShowsApi() {
         return JellyfinSdk.getTvShowsApi(this.JellyfinApi);
     }
+
+    public getMediaInfoApi() {
+        return JellyfinSdk.getMediaInfoApi(this.JellyfinApi);
+    }
+
+    public getVideosApi() {
+        return JellyfinSdk.getVideosApi(this.JellyfinApi);
+    }
 }
 
 export const CurrentSession = new Session(JellyfinApi);
