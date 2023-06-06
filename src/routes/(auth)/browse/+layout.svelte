@@ -1,6 +1,6 @@
 <script lang="ts">
     import type { LayoutData } from './$types';
-    import Header from "./Header.svelte";
+    import Header from "@/components/common/Header.svelte";
 
     export let data: LayoutData;
 
@@ -12,6 +12,6 @@
 
 <div class="flex flex-col w-full h-full">
     <Header links={navLinks} profileImageUrl={data.profileImage} />
-    <div class="xl:hidden w-full h-24 flex-none bg-slate-900"></div>
+    <div class="xl:hidden w-full h-24 flex-none bg-slate-950"></div>
     <slot />
 </div>
